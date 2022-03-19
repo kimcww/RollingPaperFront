@@ -6,7 +6,7 @@ export default function Login(){
     const [inputPw, setInputPw] = useState('')
 
     const handleInputId = (e) =>{
-        setInputPw(e.target.value);
+        setInputId(e.target.value);
     }
 
     const handleInputPw= (e) =>{

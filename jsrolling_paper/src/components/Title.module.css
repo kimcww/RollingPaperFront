@@ -4,3 +4,13 @@
     height:100px ; 
     background-color: red;
 }
+
+.titleCenter
+{
+    text-align: center;
+}
+
+.button
+{
+    float: right;
+}

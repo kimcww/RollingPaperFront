@@ -1,5 +1,7 @@
+import Paper from '@mui/material/Paper'
+
 export default function Main(){
     return (
-        <h1>Main</h1>
+       <Paper elevation={3}  />
     )
 };

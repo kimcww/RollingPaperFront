@@ -1,6 +1,22 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
+axios({
+    method: "get",
+    url: "url",
+    responseType: "type"
+}).then(function (response) {
+    // response Action
+});
+
+const API = axios.create({
+    baseURL : "http://172.30.1.23:8300",
+    headers: {
+        "Content-Type ": "application/json",
+    },
+    withCredentials: true,
+})
+
 export default function Login(){
     const [inputId, setInputId] = useState('')
     const [inputPw, setInputPw] = useState('')
@@ -14,13 +30,11 @@ export default function Login(){
     }
 
     const onClickLogin = () => {
-        console.log('click login')
+        console.log('click login');
+        axios.post('http://172.30.1.23:8300/test', {id: inputId, password : inputPw}).then(function (response){console.log(response);}).catch(function (error) {
+            console.log(error);
+          });
     }
-
-    useEffect(() => {
-        axios.get('/user_inform/login').then(res => console.log(res)).catch()
-    },
-    [])
 
     return (
         <div>
@@ -33,8 +47,11 @@ export default function Login(){
                 <input type = 'text' name ='input_pw' value = {inputPw} onChange = {handleInputPw} />
             </div>
             <div>
-                <button type='button' onClick = {onClickLogin}>Login</button>
+                <button id='login' type='button' onClick = {onClickLogin}>Login</button>
             </div>
         </div>
     )
+    
+   
+        
 }

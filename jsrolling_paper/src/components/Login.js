@@ -32,7 +32,7 @@ export default function Login(){
     const onClickLogin = () => {
         console.log('click login');
         axios.post('http://172.30.1.23:8300/test', {id: inputId, password : inputPw}).then(function (response){console.log(response);}).catch(function (error) {
-            console.log(error);
+            alert(error.response.data.message);
           });
     }
 

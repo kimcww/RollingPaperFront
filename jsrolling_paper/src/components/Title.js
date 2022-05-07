@@ -11,7 +11,7 @@ export default function Title({titleName}) {
     <Router>
         <header>
         <h1 className = {styles.titleCenter}>
-            <Link to='/*'>{titleName}</Link>
+            <Link to='/'>{titleName}</Link>
             <Link to="/Sign_up">
                 <button className={styles.button}>SignUp</button>
             </Link>
@@ -22,7 +22,7 @@ export default function Title({titleName}) {
         </header>
         <hr />
         <Routes>
-            <Route path = "/*" element={<Drawing/>} />
+            <Route path = "/" element={<Drawing/>} />
             <Route path = "/Login" element={<Login/>} />
             <Route path = "/sign_up" element = {<SignUp/>} />
         </Routes>

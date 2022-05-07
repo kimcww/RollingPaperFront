@@ -1,5 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import {FormLabel } from '@mui/material';
+import { Input } from '@mui/material';
+import {Button} from '@mui/material';
+import styles from './Login.module.css';
 
 axios({
     method: "get",
@@ -31,27 +35,22 @@ export default function Login(){
 
     const onClickLogin = () => {
         console.log('click login');
-        axios.post('http://172.30.1.23:8300/test', {id: inputId, password : inputPw}).then(function (response){console.log(response);}).catch(function (error) {
-            alert(error.response.data.message);
+        axios.post('http://172.30.1.15:8080/loginUser', {name: inputId, password : inputPw}).then(function (response){console.log(response);}).catch(function (error) {
+            alert(error);
           });
     }
 
     return (
         <div>
             <div>
-                <label htmlFor = 'input_id'>ID :</label>
-                <input type = 'text' name ='input_id' value = {inputId} onChange = {handleInputId} />
+                <Input padd fullWidth className= {styles.Center} placeholder='ID' type = 'text' name ='input_id' value = {inputId} onChange = {handleInputId} />
             </div>
             <div>
-                <label htmlFor = 'input_pw'>PW :</label>
-                <input type = 'text' name ='input_pw' value = {inputPw} onChange = {handleInputPw} />
+                <Input fullWidth placeholder='Password' type = 'password' name ='input_pw' value = {inputPw} onChange = {handleInputPw} />
             </div>
             <div>
-                <button id='login' type='button' onClick = {onClickLogin}>Login</button>
+                <Button fullWidth id='login' type='button' onClick = {onClickLogin}>Login</Button>
             </div>
         </div>
     )
-    
-   
-        
 }

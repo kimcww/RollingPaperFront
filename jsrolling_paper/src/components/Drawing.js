@@ -35,6 +35,15 @@ export default function Drawing() {
 
   return (
     <div>
+      <select
+        value={tool}
+        onChange={(e) => {
+          setTool(e.target.value);
+        }}
+      >
+        <option value="pen">Pen</option>
+        <option value="eraser">Eraser</option>
+      </select>
       <Stage
         width={window.innerWidth}
         height={window.innerHeight}
@@ -43,7 +52,6 @@ export default function Drawing() {
         onMouseup={handleMouseUp}
       >
         <Layer>
-          <Text text="Just start drawing" x={5} y={30} />
           {lines.map((line, i) => (
             <Line
               key={i}
@@ -59,15 +67,7 @@ export default function Drawing() {
           ))}
         </Layer>
       </Stage>
-      <select
-        value={tool}
-        onChange={(e) => {
-          setTool(e.target.value);
-        }}
-      >
-        <option value="pen">Pen</option>
-        <option value="eraser">Eraser</option>
-      </select>
+
     </div>
   );
 };

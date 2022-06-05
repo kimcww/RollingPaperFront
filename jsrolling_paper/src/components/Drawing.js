@@ -1,6 +1,7 @@
 import React from 'react';
 // import { createRoot } from 'react-dom/client';
 import { Stage, Layer, Line, Text } from 'react-konva';
+import { Button, Grid } from '@mui/material'
 
 export default function Drawing() {
   const [tool, setTool] = React.useState('pen');
@@ -32,18 +33,28 @@ export default function Drawing() {
   const handleMouseUp = () => {
     isDrawing.current = false;
   };
+  const onSubmitDrawingData = () => {
 
+  }
   return (
     <div>
-      <select
-        value={tool}
-        onChange={(e) => {
-          setTool(e.target.value);
-        }}
-      >
-        <option value="pen">Pen</option>
-        <option value="eraser">Eraser</option>
-      </select>
+      <div>
+
+        <Grid container justifyContent="flex-end">
+          <select
+            value={tool}
+            onChange={(e) => {
+              setTool(e.target.value);
+            }}
+          >
+            <option value="pen">Pen</option>
+            <option value="eraser">Eraser</option>
+          </select>
+          <Button id='submitDrawing' type='button' onSubmit={onSubmitDrawingData}>Submit</Button>
+        </Grid>
+
+      </div>
+
       <Stage
         width={window.innerWidth}
         height={window.innerHeight}
@@ -56,7 +67,7 @@ export default function Drawing() {
             <Line
               key={i}
               points={line.points}
-              stroke="#df4b26"
+              stroke="#000000"
               strokeWidth={5}
               tension={0.5}
               lineCap="round"

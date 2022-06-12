@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 // import { createRoot } from 'react-dom/client';
-import { Stage, Layer, Line, Text } from 'react-konva';
+import { Stage, Layer, Line, Image} from 'react-konva';
 import { Button, Grid } from '@mui/material'
 import axios from 'axios';
 
@@ -11,16 +11,17 @@ export default function Drawing() {
   const [inputId, setInputId] = React.useState('')
   const [inputPw, setInputPw] = React.useState('')
 
-
   const stageRef = React.useRef(null);
+
   const handleExport = () => {
-    const uri = stageRef.current.toDataURL();
+    const uri = stageRef.current.toDataURL();   
+    console.log(stageRef.current);
     console.log(uri);
   }
 
   const handleImport = () => {
-    
-  }
+    }
+
   const handleMouseDown = (e) => {
     isDrawing.current = true;
     const pos = e.target.getStage().getPointerPosition();
@@ -54,6 +55,7 @@ export default function Drawing() {
 
 
   }
+
   return (
     <div>
       <div>

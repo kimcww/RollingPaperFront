@@ -52,5 +52,4 @@ export default function Login(){
             <div><Button fullWidth type="submit" onClick={onSubmit} >계정 생성하기</Button></div>
       </div>
     );
-        
 }

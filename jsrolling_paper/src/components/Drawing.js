@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-// import { createRoot } from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
 import { Stage, Layer, Line, Image } from 'react-konva';
 import { Button, Grid } from '@mui/material'
 import axios from 'axios';

@@ -5,6 +5,7 @@ import Main from './Main';
 import {Link, Route, BrowserRouter as Router, Routes} from "react-router-dom";
 import SignUp from './SignUp';
 import Drawing from './Drawing';
+import Counter from '../features/counter/Counter';
 
 export default function Title({titleName}) {
     return(
@@ -25,6 +26,7 @@ export default function Title({titleName}) {
             <Route path = "/" element={<Drawing/>} />
             <Route path = "/Login" element={<Login/>} />
             <Route path = "/sign_up" element = {<SignUp/>} />
+            <Route path = "/counter" element = {<Counter/>} />
         </Routes>
     </Router>
     )

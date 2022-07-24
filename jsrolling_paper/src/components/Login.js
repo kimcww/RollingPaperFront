@@ -63,7 +63,7 @@ export default function Login(){
             // Loading... 메세지가 통신이 끝난 후 1.5초 이후 없어짐.
             setTimeout(() => setMsg(""), 1500);
             // code = 데이터 상태
-            const code = res.data.code;
+            const code = res.status;
             if (code === 400) {
                 // 비어있는
                 alert("비어있는 내용입니다.")
@@ -85,7 +85,7 @@ export default function Login(){
     return (
         <div>
             <div>
-                <Input padd fullWidth className= {styles.Center} placeholder='ID' type = 'text' name ='input_id' value = {id} onChange = {handleInputId} />
+                <Input fullWidth className= {styles.Center} placeholder='ID' type = 'text' name ='input_id' value = {id} onChange = {handleInputId} />
             </div>
             <div>
                 <Input fullWidth placeholder='Password' type = 'password' name ='input_pw' value = {password} onChange = {handleInputPw} />

@@ -9,12 +9,14 @@ import promiseMiddleware from "redux-promise";
 import reduxThunk from "redux-thunk";
 import  reducer from "./_reducers";
 import store from './app/store'
+import LoginControl from '../src/components/LoginControl'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
 root.render(
   <Provider store={store}>
     <App />
+    {/* <LoginControl/> */}
   </Provider>
 )
 // If you want to start measuring performance in your app, pass a function

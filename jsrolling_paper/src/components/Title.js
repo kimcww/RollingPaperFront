@@ -6,6 +6,7 @@ import {Link, Route, BrowserRouter as Router, Routes} from "react-router-dom";
 import SignUp from './SignUp';
 import Drawing from './Drawing';
 import Counter from '../features/counter/Counter';
+import LoginControl from './LoginControl';
 
 export default function Title({titleName}) {
     return(
@@ -17,7 +18,8 @@ export default function Title({titleName}) {
                 <button className={styles.button}>SignUp</button>
             </Link>
             <Link to="/Login">
-                <button className={styles.button}>Login</button>
+                {/* <button className={styles.button}>Login</button> */}
+                <LoginControl/>
             </Link>
         </h1>
         </header>

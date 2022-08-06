@@ -12,6 +12,7 @@
     height: 650px;
     border-radius: 15px;
     padding:15px;
+    position : relative;
 }
 .sketch_container{
     width:80%;

@@ -14,7 +14,7 @@ export default function Login(){
     const onClickSignUp = () =>{
         console.log("clicked sign up");
         axios.post('http://192.168.220.1:8080/registerUser', {name: name, email: email, password : password, confirmPassword: confirmPassword }).then(function (response){console.log(response);}).catch(function (error) {
-            alert(error.response.data.message);
+             alert(error.response.data.message);
           });
     }
     const onNameHandler = (event) => {

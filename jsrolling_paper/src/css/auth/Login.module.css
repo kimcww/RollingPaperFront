@@ -1,0 +1,12 @@
+.simple_login_logo{
+    width: 75px;
+    height: 75px;
+    border-style : Solid;
+    border-color : #9E9E9E;
+    border-color : rgba(158, 158, 158, 1);
+    border-width : 1px;
+    border-radius : 75px;
+    -moz-border-radius : 75px;
+    -webkit-border-radius : 75px;
+    background-image: ;
+}

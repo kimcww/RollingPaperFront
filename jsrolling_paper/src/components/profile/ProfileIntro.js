@@ -6,11 +6,6 @@ export default function ProfileIntro(){
     const textareaRef = React.useRef(null);
     const [isEditing, setEditing] = React.useState(false);
     const [editName, setEditButtonName] = React.useState("edit");
-    const [disable, setDisable] = React.useState(false);
-    // useEffect(() => {
-    //     if(isEditing === false)
-    //         textareaRef.current.focus(); 
-    //    }, [textareaRef]);
 
     const clickedEdit = () =>{
         if(isEditing == true)

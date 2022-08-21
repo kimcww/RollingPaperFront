@@ -1,5 +1,4 @@
 import styles from './Title.module.css';
-import Login from './Login';
 import Test from './Test';
 import Main from './Main';
 import {Link, Route, BrowserRouter as Router, Routes} from "react-router-dom";
@@ -7,6 +6,7 @@ import SignUp from './SignUp';
 import Drawing from './Drawing';
 import Counter from '../features/counter/Counter';
 import LoginControl from './LoginControl';
+import Login from './Auth/Login';
 
 export default function Title({titleName}) {
     return(

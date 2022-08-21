@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import {FormLabel } from '@mui/material';
-import { Input } from '@mui/material';
-import {Button} from '@mui/material';
-import styles from './Login.module.css';
-import  {loginUser}from '../features/login/loginSlice';
+import css from '../../css/auth/Login.module.css';
+import  {loginUser}from '../../features/login/loginSlice';
 import { useDispatch } from "react-redux";
+import googleLogo from '../../images/loginlogo/google_logo.svg';
+import naverLogo from '../../images/loginlogo/naver_logo.png';
+import kakaoLogo from '../../images/loginlogo/kakao_logo.png';
 
 axios({
     method: "get",
@@ -83,15 +83,32 @@ export default function Login(){
         setLoading(true);
     }
     return (
-        <div>
-            <div>
-                <Input fullWidth className= {styles.Center} placeholder='ID' type = 'text' name ='input_id' value = {id} onChange = {handleInputId} />
+        <div className={css.simple_box}>
+            <div className={css.simple_title}>로그인</div>
+            <div className={css.simple_content}>간편로그인</div>
+            <div className={css.simple_login_box}>
+                <div className={css.simple_login_logo}><img src= {googleLogo} className={css.simple_login_logo_img}/></div>
+                <div className={css.simple_login_logo}><img src= {naverLogo} className={css.simple_login_logo_img}/></div>
+                <div className={css.simple_login_logo}><img src= {kakaoLogo} className={css.simple_login_logo_img}/></div>
             </div>
             <div>
-                <Input fullWidth placeholder='Password' type = 'password' name ='input_pw' value = {password} onChange = {handleInputPw} />
+                <div className={css.simple_content}>아이디</div>
+                <input placeholder='ID' type = 'text' name ='input_id' value = {id} onChange = {handleInputId} className = {css.simple_login_input} />
             </div>
             <div>
-                <Button fullWidth id='login' type='button' onClick = {LoginFunc}>Login</Button>
+                <div className={css.simple_content}>패스워드</div>
+                <input placeholder='Password' type = 'password' name ='input_pw' value = {password} onChange = {handleInputPw} className = {css.simple_login_input} />
+            </div>
+            <div className = {css.simple_button_container}>
+                <div className = {css.simple_button_box_left}>
+                    <button id='login' type='button' onClick = {LoginFunc} className={css.simple_button}>회원가입</button>
+                </div>
+                <div className = {css.simple_button_box_right}>
+                    <button id='login' type='button' onClick = {LoginFunc} className={css.simple_button}>로그인!</button>
+                </div>
+            </div>
+            <div style={{textAlign:'right'}}>
+                <button id='login' type='button' onClick = {LoginFunc} className={css.simple_button_noborder} >닫기</button>
             </div>
         </div>
     )

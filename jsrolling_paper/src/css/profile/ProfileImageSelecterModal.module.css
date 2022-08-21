@@ -4,10 +4,9 @@
 
 .modal>.header {
     width: 100%;
-    border-bottom: 1px solid gray;
     font-size: 18px;
     text-align: center;
-    padding: 5px;
+    padding: 20px;
 }
 
 .modal>.content {
@@ -34,4 +33,16 @@
     background: #ffffff;
     border-radius: 18px;
     border: 1px solid #cfcece;
+}
+
+.container{
+    display: flex;
+    width: 400px;
+    height: 100px;
+    flex-direction: row ;
+    align-items: stretch;
+}
+.containerImg{
+    width: 100%;
+    height: 100%;
 }

@@ -11,9 +11,11 @@ export default function ProfileImageSelecterModal(props) {
                     &times;
                 </button>
                 <div className={css.header}>프로필 선택</div>
-                <div className={css.content}>
-                    {' '}
-                    이미지 들어갈 곳
+                <div className={css.container}>
+                    <img src='https://i.imgur.com/ndu6pfe.png' className={css.containerImg}></img>
+                    <img src='https://i.imgur.com/ndu6pfe.png' className={css.containerImg}></img>
+                    <img src='https://i.imgur.com/ndu6pfe.png'className={css.containerImg}></img>
+                    <img src='https://i.imgur.com/ndu6pfe.png'className={css.containerImg}></img>
                 </div>
                 <div className={css.actions}>
                     <Popup

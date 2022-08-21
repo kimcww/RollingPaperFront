@@ -1,10 +1,12 @@
 import css from '../../css/sketch/Sketch.module.css';
-import PaintPalette from './PaintPalette';
- 
+import Drawing from '../Drawing';
+
 export default function Sketch(){
-    return (
-        <div className={css.sketch}>
-            <PaintPalette></PaintPalette>
+
+    
+    return (  
+        <div id = 'sketchman' className={css.sketch}>
+            <Drawing className={css.sketch} ></Drawing>
         </div>
     )
 };

@@ -5,7 +5,7 @@ import {Button} from '@mui/material';
 import axios from 'axios';
 
 export default function Login(){
-    const [name, setName] = useState("")
+    const [id, setID] = useState("")
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
@@ -13,12 +13,12 @@ export default function Login(){
 
     const onClickSignUp = () =>{
         console.log("clicked sign up");
-        axios.post('http://192.168.220.1:8080/registerUser', {name: name, email: email, password : password, confirmPassword: confirmPassword }).then(function (response){console.log(response);}).catch(function (error) {
+        axios.post('http://192.168.220.1:8080/registerUser', {name: id, email: email, password : password, confirmPassword: confirmPassword }).then(function (response){console.log(response);}).catch(function (error) {
              alert(error.response.data.message);
           });
     }
-    const onNameHandler = (event) => {
-        setName(event.currentTarget.value);
+    const onIDHandler = (event) => {
+        setID(event.currentTarget.value);
       }
       const onEmailHandler = (event) => {
           setEmail(event.currentTarget.value);
@@ -34,8 +34,8 @@ export default function Login(){
     
       const onSubmit = (event) => {
         event.preventDefault()
-        if(name === "")
-            return alert('이름을 입력해주세요');
+        if(id === "")
+            return alert('ID를 입력해주세요');
         if(email === "")
             return alert('이메일을 입력해주세요');
         if(password !== confirmPassword) {
@@ -45,7 +45,7 @@ export default function Login(){
 
     return(
         <div class="loginregister">
-            <div><Input fullWidth name="name" type="text" placeholder="이름" value={name} onChange={onNameHandler} class ="loginregister__input"/></div>
+            <div><Input fullWidth name="id" type="text" placeholder="ID" value={id} onChange={onIDHandler} class ="loginregister__input"/></div>
             <div><Input fullWidth name="email" type="email" placeholder="이메일" value={email} onChange={onEmailHandler} class="loginregister__input"/></div>
             <div><Input fullWidth name="password" type="password" placeholder="비밀번호" value={password} onChange={onPasswordHandler} class="loginregister__input"/></div>
             <div><Input fullWidth name="confirmPassword" type="password" placeholder="비밀번호 확인" value={confirmPassword} onChange={onConfirmPasswordHandler} class="loginregister__input"/></div>

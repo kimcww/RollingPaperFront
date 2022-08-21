@@ -1,9 +1,25 @@
 import css from '../../css/profile/ProfileImg.module.css';
- 
-export default function ProfileImg(){
+import Popup from 'reactjs-popup';
+import { useState } from 'react';
+import ProfileImageSelecterModal from './ProfileImageSelecterModal';
+
+export default function ProfileImg() {
+    const [open, setOpen] = useState(false);
+    const [profileURL, setProfileURL] = useState("https://i.imgur.com/ndu6pfe.png");
+
+    const closeModal = () => {
+        setOpen(false);
+    }
+    const openModal = () => {
+        setOpen(true);
+    }
+
     return (
         <div className={css.profileImg}>
-            
+            <img src='https://i.imgur.com/ndu6pfe.png' className={css.sourceImg} onClick={openModal} ></img>
+            <Popup id="" open={open} position="center center" onClose={closeModal} modal nested>
+                <ProfileImageSelecterModal closeEvent={closeModal}></ProfileImageSelecterModal>
+            </Popup>
         </div>
     )
 };

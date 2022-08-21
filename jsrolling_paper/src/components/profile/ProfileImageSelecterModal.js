@@ -2,35 +2,31 @@ import React from 'react';
 import Popup from 'reactjs-popup';
 import css from '../../css/profile/ProfileImageSelecterModal.module.css';
 
-export default function ProfileImageSelecterModal() {
+export default function ProfileImageSelecterModal(props) {
 
     return (
-        <div className={css.modal}>
-            <button className={css.close} >
-                &times;
-            </button>
-            <div className={css.header}>프로필 선택</div>
-            <div className={css.content}>
-                {' '}
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, a nostrum.
-                Dolorem, repellat quidem ut, minima sint vel eveniet quibusdam voluptates
-                delectus doloremque, explicabo tempore dicta adipisci fugit amet dignissimos?
-                <br />
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur sit
-                commodi beatae optio voluptatum sed eius cumque, delectus saepe repudiandae
-                explicabo nemo nam libero ad, doloribus, voluptas rem alias. Vitae?
+        // close => (
+            <div className={css.modal}>
+                <button className={css.close} onClick = {props.closeEvent}>
+                    &times;
+                </button>
+                <div className={css.header}>프로필 선택</div>
+                <div className={css.content}>
+                    {' '}
+                    이미지 들어갈 곳
+                </div>
+                <div className={css.actions}>
+                    <Popup
+                        trigger={<button className={css.button}> 설정 </button>}
+                        position="top center"
+                        nested
+                    >
+                        <span>
+                            프로필 변경완료
+                        </span>
+                    </Popup>
+                </div>
             </div>
-            <div className={css.actions}>
-                <Popup
-                    trigger={<button className={css.button}> 설정 </button>}
-                    position="top center"
-                    nested
-                >
-                    <span>
-                        프로필 변경완료
-                    </span>
-                </Popup>
-            </div>
-        </div>
-    )
+        )
+    // )
 };

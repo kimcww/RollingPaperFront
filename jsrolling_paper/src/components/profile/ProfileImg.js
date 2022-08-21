@@ -5,14 +5,19 @@ import ProfileImageSelecterModal from './ProfileImageSelecterModal';
 
 export default function ProfileImg() {
     const [open, setOpen] = useState(false);
+    const [profileURL, setProfileURL] = useState("https://i.imgur.com/ndu6pfe.png");
 
-    const clickedProfileImage = () => {
-        setOpen(!open)
+    const closeModal = () => {
+        setOpen(false);
     }
+    const openModal = () => {
+        setOpen(true);
+    }
+    
     return (
-        <div className={css.profileImg} onClick={clickedProfileImage}>
-            <Popup open={open} position="center center">
-                <ProfileImageSelecterModal></ProfileImageSelecterModal>
+        <div className={css.profileImg} onClick={openModal}>
+            <Popup id = "" open={open} position="center center" onClose={closeModal} modal nested>
+                <ProfileImageSelecterModal closeEvent = {closeModal}></ProfileImageSelecterModal>
             </Popup>
         </div>
     )

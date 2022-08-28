@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import css from '../../css/auth/Register.module.css';
 import axios from 'axios';
 
-export default function Register(){
+export default function Register(props){
     const [name, setName] = useState("")
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("")
@@ -15,6 +15,7 @@ export default function Register(){
              alert(error.response.data.message);
           });
     }
+    
     const onNameHandler = (event) => {
         setName(event.currentTarget.value);
       }
@@ -64,7 +65,7 @@ export default function Register(){
                 <button fullWidth type="submit" onClick={onSubmit} className = {css.simple_button} >가입하기</button>
             </div>
             <div style={{textAlign:'right'}}>
-                <button id='login' type='button' className={css.simple_button_noborder} >닫기</button>
+                <button id='login' type='button' className={css.simple_button_noborder} onClick = {props.closeEvent} >닫기</button>
             </div>
       </div>
     );

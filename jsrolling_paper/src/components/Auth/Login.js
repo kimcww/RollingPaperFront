@@ -6,6 +6,8 @@ import { useDispatch } from "react-redux";
 import googleLogo from '../../images/loginlogo/google_logo.svg';
 import naverLogo from '../../images/loginlogo/naver_logo.png';
 import kakaoLogo from '../../images/loginlogo/kakao_logo.png';
+import Popup from 'reactjs-popup';
+import Register from './Register';
 
 axios({
     method: "get",
@@ -15,6 +17,7 @@ axios({
     // response Action
 });
 
+
 const API = axios.create({
     baseURL : "http://172.30.1.23:8300",
     headers: {
@@ -23,14 +26,23 @@ const API = axios.create({
     withCredentials: true,
 })
 
-export default function Login(){
+export default function Login(props){
     const dispatch = useDispatch();
 
     const [id, setId] = useState("");
     const [password, setPassword] = useState("");
+    const [registerOpen, setRegisterOpen] = useState(false);
 
     const [loading, setLoading] = useState(false);
     const [msg, setMsg] = useState("");
+
+
+    const closeRegisterModal = () => {
+        setRegisterOpen(false);
+    }
+    const openRegisterModal = () => {
+        setRegisterOpen(true);
+    }
 
     const handleInputId = (e) =>{
         setId(e.target.value);
@@ -42,9 +54,9 @@ export default function Login(){
 
     const onClickLogin = () => {
         console.log('click login');
-        axios.post('http://172.30.1.15:8080/loginUser', {name: id, password : password}).then(function (response){console.log(response);}).catch(function (error) {
+        axios.post(process.env.REACT_APP_API_SERVER + '/loginUser', {name: id, password : password}).then(function (response){console.log(response);}).catch(function (error) {
             alert(error);
-          });
+        });
     }
     const LoginFunc = (e) => {
         e.preventDefault();
@@ -56,7 +68,7 @@ export default function Login(){
             id,
             password
         }
-        axios.post('http://172.30.1.57:8300/login', {memberId: id, memberPwd : password})
+        axios.post(process.env.REACT_APP_API_SERVER + '/login', {memberId: id, memberPwd : password})
         .then(res => {
             // 2순위 통신이 끝나야 작동. 통신 이후 클릭이 되도록.
             setLoading(false);
@@ -101,14 +113,23 @@ export default function Login(){
             </div>
             <div className = {css.simple_button_container}>
                 <div className = {css.simple_button_box_left}>
-                    <button id='login' type='button' onClick = {LoginFunc} className={css.simple_button}>회원가입</button>
+                    <button id='login' type='button' onClick = {openRegisterModal} className={css.simple_button}>회원가입</button>
                 </div>
+                <Popup 
+                        open={registerOpen}
+                        onClose={closeRegisterModal}
+                        modal 
+                        position = "center center"
+                        nested
+                    >
+                        <Register closeEvent={closeRegisterModal}/>
+                </Popup>
                 <div className = {css.simple_button_box_right}>
                     <button id='login' type='button' onClick = {LoginFunc} className={css.simple_button}>로그인!</button>
                 </div>
             </div>
             <div style={{textAlign:'right'}}>
-                <button id='login' type='button' onClick = {LoginFunc} className={css.simple_button_noborder} >닫기</button>
+                <button id='login' type='button' onClick = {props.closeEvent} className={css.simple_button_noborder} >닫기</button>
             </div>
         </div>
     )

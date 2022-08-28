@@ -13,12 +13,11 @@ export default function ProfileImg() {
     const openModal = () => {
         setOpen(true);
     }
-
     return (
         <div className={css.profileImg}>
-            <img src='https://i.imgur.com/ndu6pfe.png' className={css.sourceImg} onClick={openModal} ></img>
+            <img src={profileURL} className={css.sourceImg} onClick={openModal} ></img>
             <Popup id="" open={open} position="center center" onClose={closeModal} modal nested>
-                <ProfileImageSelecterModal closeEvent={closeModal}></ProfileImageSelecterModal>
+                <ProfileImageSelecterModal closeEvent={closeModal} setProfileURL={setProfileURL}></ProfileImageSelecterModal>
             </Popup>
         </div>
     )

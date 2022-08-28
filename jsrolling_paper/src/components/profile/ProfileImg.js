@@ -16,7 +16,7 @@ export default function ProfileImg() {
     return (
         <div className={css.profileImg}>
             <img src={profileURL} className={css.sourceImg} onClick={openModal} ></img>
-            <Popup id="" open={open} position="center center" onClose={closeModal} modal nested>
+            <Popup id="" open={open} position="center center" onClose={closeModal} modal>
                 <ProfileImageSelecterModal closeEvent={closeModal} setProfileURL={setProfileURL}></ProfileImageSelecterModal>
             </Popup>
         </div>

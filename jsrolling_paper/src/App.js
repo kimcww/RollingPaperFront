@@ -8,7 +8,7 @@ import Header from './components/header/Header';
 function App() {
   return (
     //<Title titleName={"Changwoo"}/>
-    <Header/>
+    <Main></Main>
     // <Login/>
     // <Register/>
   );

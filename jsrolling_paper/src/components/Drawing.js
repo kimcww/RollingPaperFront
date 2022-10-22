@@ -98,7 +98,7 @@ export default function Drawing(props) {
   const handleMouseDown = (e) => {
     isDrawing.current = true;
     const pos = e.target.getStage().getPointerPosition();
-    setLines([...lines, { tool, points: [pos.x, pos.y] }]);
+    setLines([...lines, { tool, points: [pos.x, pos.y], lineStroke, lineStrokeWidth }]);
   };
 
   const handleMouseMove = (e) => {
@@ -122,7 +122,8 @@ export default function Drawing(props) {
   };
 
   const onSaveData = () => {
-
+    const a = layerRef.current.toJson();
+    console.log(a);
   }
 
   function fitsize()
@@ -158,13 +159,13 @@ export default function Drawing(props) {
           onMousemove={handleMouseMove}
           onMouseup={handleMouseUp}
         >
-          <Layer>
+          <Layer id = 'layer' ref={layerRef}>
             {lines.map((line, i) => (
               <Line
                 key={i}
                 points={line.points}
-                stroke={lineStroke}
-                strokeWidth={lineStrokeWidth}
+                stroke={line.lineStroke}
+                strokeWidth={line.lineStrokeWidth}
                 tension={0.5}
                 lineCap="round"
                 globalCompositeOperation={

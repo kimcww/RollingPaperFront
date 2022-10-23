@@ -5,7 +5,7 @@ import Home from './home/Home';
 
 export default function Main(){
     return (
-       <div>
+     <div>
             <div className={css.container_shadow}>
                 <div className={css.container}>
                     <Header/>

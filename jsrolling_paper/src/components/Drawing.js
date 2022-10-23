@@ -61,12 +61,16 @@ export default function Drawing(props) {
   const [size,setSize] = React.useState([]);
   const [tool, setTool] = React.useState('pen');
   const [lines, setLines] = React.useState([]);
+  const [lineStroke, setStroke] = React.useState('#000000');
+  const [lineStrokeWidth, setStrokeWidth] = React.useState(5);
   const isDrawing = React.useRef(false);
-  const [inputId, setInputId] = React.useState('')
-  const [inputPw, setInputPw] = React.useState('')
   const stageRef = React.useRef(null);
   const layerRef = React.useRef(null);
   
+  const changeColor = (color) =>{
+    setStroke(color);
+  }
+
   const resizeHandler = () =>{
     const sket = document.querySelector("#sketchman");
     setSize([sket.clientWidth, sket.clientHeight]);
@@ -94,7 +98,7 @@ export default function Drawing(props) {
   const handleMouseDown = (e) => {
     isDrawing.current = true;
     const pos = e.target.getStage().getPointerPosition();
-    setLines([...lines, { tool, points: [pos.x, pos.y] }]);
+    setLines([...lines, { tool, points: [pos.x, pos.y], lineStroke, lineStrokeWidth }]);
   };
 
   const handleMouseMove = (e) => {
@@ -118,7 +122,8 @@ export default function Drawing(props) {
   };
 
   const onSaveData = () => {
-
+    const a = layerRef.current.toJson();
+    console.log(a);
   }
 
   function fitsize()
@@ -130,7 +135,7 @@ export default function Drawing(props) {
     <div>
       <div>
         <Grid container justifyContent="flex-end">
-          <PaintPalette className={css.alignLeft}></PaintPalette>
+          <PaintPalette changeColor = {changeColor} className={css.alignLeft}></PaintPalette>
           <select
             value={tool}
             onChange={(e) => {
@@ -154,13 +159,13 @@ export default function Drawing(props) {
           onMousemove={handleMouseMove}
           onMouseup={handleMouseUp}
         >
-          <Layer>
+          <Layer id = 'layer' ref={layerRef}>
             {lines.map((line, i) => (
               <Line
                 key={i}
                 points={line.points}
-                stroke="#000000"
-                strokeWidth={5}
+                stroke={line.lineStroke}
+                strokeWidth={line.lineStrokeWidth}
                 tension={0.5}
                 lineCap="round"
                 globalCompositeOperation={

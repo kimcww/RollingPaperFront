@@ -10,6 +10,7 @@ export default function PaintPalette(props) {
             <Button className={css.button} style={{ background: 'red' }} onClick={()=>{props.changeColor('#DB3E1C')}}></Button>
             <Button className={css.button} style={{ background: 'blue' }} onClick={()=>{props.changeColor('#00FFFF')}}></Button>
             <Button className={css.button} style={{ background: 'yellow' }} onClick={()=>{props.changeColor('#ffff00')}}></Button>
+            <Button className={css.button} onClick={()=>{props.clickClear()}}>Clear</Button>
         </div>
     )
 };

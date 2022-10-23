@@ -126,6 +126,9 @@ export default function Drawing(props) {
     console.log(a);
   }
 
+  const clickClear= () => {
+    layerRef.current.removeChildren();
+  }
   function fitsize()
   {
 
@@ -135,7 +138,7 @@ export default function Drawing(props) {
     <div>
       <div>
         <Grid container justifyContent="flex-end">
-          <PaintPalette changeColor = {changeColor} className={css.alignLeft}></PaintPalette>
+          <PaintPalette changeColor = {changeColor} clickClear = {clickClear} className={css.alignLeft}></PaintPalette>
           <select
             value={tool}
             onChange={(e) => {

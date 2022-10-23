@@ -1,12 +1,10 @@
-import styles from './Title.module.css';
-import Test from './Test';
-import Main from './Main';
-import {Link, Route, BrowserRouter as Router, Routes} from "react-router-dom";
-import SignUp from './SignUp';
-import Drawing from './Drawing';
+import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom";
 import Counter from '../features/counter/Counter';
-import LoginControl from './LoginControl';
 import Login from './Auth/Login';
+import Drawing from './Drawing';
+import LoginControl from './LoginControl';
+import SignUp from './SignUp';
+import styles from './Title.module.css';
 
 export default function Title({titleName}) {
     return(

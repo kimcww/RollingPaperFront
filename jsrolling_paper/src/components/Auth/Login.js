@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 import css from '../../css/auth/Login.module.css';
 import  {loginUser}from '../../features/login/loginSlice';
-import { useDispatch } from "react-redux";
+import {useDispatch} from "react-redux";
 import googleLogo from '../../images/loginlogo/google_logo.svg';
 import naverLogo from '../../images/loginlogo/naver_logo.png';
 import kakaoLogo from '../../images/loginlogo/kakao_logo.png';
@@ -17,14 +17,6 @@ axios({
     // response Action
 });
 
-
-const API = axios.create({
-    baseURL : "http://172.30.1.23:8300",
-    headers: {
-        "Content-Type ": "application/json",
-    },
-    withCredentials: true,
-})
 
 export default function Login(props){
     const dispatch = useDispatch();
@@ -52,23 +44,13 @@ export default function Login(props){
         setPassword(e.target.value);
     }
 
-    const onClickLogin = () => {
-        console.log('click login');
-        axios.post(process.env.REACT_APP_API_SERVER + '/loginUser', {name: id, password : password}).then(function (response){console.log(response);}).catch(function (error) {
-            alert(error);
-        });
-    }
     const LoginFunc = (e) => {
         e.preventDefault();
         // Loading... 메세지 출력
         setMsg("Loading...");
 
         // API
-        let body = {
-            id,
-            password
-        }
-        axios.post(process.env.REACT_APP_API_SERVER + '/login', {memberId: id, memberPwd : password})
+        axios.post(process.env.REACT_APP_API_SERVER + '/login', {memberId: id, memberPwd : password}, {withCredentials: true})
         .then(res => {
             // 2순위 통신이 끝나야 작동. 통신 이후 클릭이 되도록.
             setLoading(false);
@@ -86,9 +68,10 @@ export default function Login(props){
                 // 비밀번호가 틀렸을때
                 alert("비밀번호가 일치하지 않습니다.")
             } else {
-                alert("login 성공");
-                console.log("res = ",res);
-                dispatch(loginUser(res.data.userInfo));
+                alert("로그인 성공");
+                console.log(res.headers['Set-Cookie']);
+                dispatch(loginUser(res.data));
+                props.closeEvent();
             }
         })
         // 1순위 로그인 버튼을 누르면 클릭이 안되도록.

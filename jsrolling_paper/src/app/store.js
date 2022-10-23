@@ -1,13 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
-import counterReducer from '../features/counter/counterSlice'
-import loginSlice  from '../features/login/loginSlice'
+import persistReducer from '../_reducers/index';
 export default configureStore({
-  reducer: {
-    counter: counterReducer,
-    user: loginSlice,
-  },
+  reducer: persistReducer,
   middleware: (getDefaultMiddleware) =>
-  getDefaultMiddleware({
-    serializableCheck: false,
-  }),
+    getDefaultMiddleware({
+      serializableCheck: false,
+    })
 })

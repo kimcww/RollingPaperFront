@@ -1,16 +1,11 @@
-import Main from './components/Main';
-import Home from './components/home/Home.js';
-import Title from './components/Title';
-import SignUp from './components/SignUp'
-import Login from './components/Auth/Login';
-import Register from './components/Auth/Register';
+import { useDispatch } from "react-redux";
 import Header from './components/header/Header';
+import { loginUser } from "./features/login/loginSlice";
+
 function App() {
+
   return (
-    //<Title titleName={"Changwoo"}/>
-    <Header/>
-    // <Login/>
-    // <Register/>
+        <Header/>
   );
 }
 

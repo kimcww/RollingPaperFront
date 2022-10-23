@@ -138,17 +138,8 @@ export default function Drawing(props) {
     <div>
       <div>
         <Grid container justifyContent="flex-end">
-          <PaintPalette changeColor = {changeColor} clickClear = {clickClear} className={css.alignLeft}></PaintPalette>
-          <select
-            value={tool}
-            onChange={(e) => {
-              setTool(e.target.value);
-            }}
-          >
-            <option value="pen">Pen</option>
-            <option value="eraser">Eraser</option>
-          </select>
-          <Button id='submitDrawing' type='button' onClick={onSaveData}>Submit</Button>
+          <PaintPalette tool = {tool} setTool = {setTool} changeColor = {changeColor} clickClear = {clickClear} className={css.alignLeft}></PaintPalette>
+          <Button id='submitDrawing' className={css.submit} type='button' onClick={onSaveData}>Submit</Button>
         </Grid>
       </div>
       <Fragment>

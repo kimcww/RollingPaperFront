@@ -8,7 +8,8 @@ export const loginSlice = createSlice({
     memberIntro: "",
     memberNm: "",
     memberSns: "",
-    memberStatus: ""
+    memberStatus: "",
+    isLogin:false
   },
 
   reducers: {
@@ -21,6 +22,7 @@ export const loginSlice = createSlice({
             state.memberNm = action.payload.memberNm;
             state.memberSns = action.payload.memberSns;
             state.memberStatus = action.payload.memberStatus;
+            state.isLogin = true;
             // state 변화를 알림
             return state;
         },
@@ -33,11 +35,12 @@ export const loginSlice = createSlice({
             state.memberNm = "";
             state.memberSns = "";
             state.memberStatus = "";
+            state.isLogin = false;
             // state 변화를 알림
             return state;
-        },
+        }
   },
 })
 
-export const { loginUser, clearUser } = loginSlice.actions;
+export const { loginUser, clearUser, loginHidden, loginDisplay } = loginSlice.actions;
 export default loginSlice;

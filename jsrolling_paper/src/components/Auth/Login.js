@@ -8,6 +8,7 @@ import naverLogo from '../../images/loginlogo/naver_logo.png';
 import kakaoLogo from '../../images/loginlogo/kakao_logo.png';
 import Popup from 'reactjs-popup';
 import Register from './Register';
+import cookies from 'react-cookies';
 
 axios({
     method: "get",
@@ -25,6 +26,7 @@ export default function Login(props){
     const [password, setPassword] = useState("");
     const [registerOpen, setRegisterOpen] = useState(false);
 
+    console.log("testestset ", process.env.REACT_APP_API_SERVER);
     const [loading, setLoading] = useState(false);
     const [msg, setMsg] = useState("");
 
@@ -50,7 +52,7 @@ export default function Login(props){
         setMsg("Loading...");
 
         // API
-        axios.post(process.env.REACT_APP_API_SERVER + '/login', {memberId: id, memberPwd : password}, {withCredentials: true})
+        axios.post('/login', {memberId: id, memberPwd : password}, {withCredentials: true})
         .then(res => {
             // 2순위 통신이 끝나야 작동. 통신 이후 클릭이 되도록.
             setLoading(false);
@@ -69,14 +71,17 @@ export default function Login(props){
                 alert("비밀번호가 일치하지 않습니다.")
             } else {
                 alert("로그인 성공");
-                console.log(res.headers['Set-Cookie']);
+                sessionStorage.setItem("JSESSION", res.headers['jsession']);
                 dispatch(loginUser(res.data));
+                axios.defaults.headers.common['JSESSION'] = sessionStorage.getItem("JSESSION");
                 props.closeEvent();
             }
         })
         // 1순위 로그인 버튼을 누르면 클릭이 안되도록.
         setLoading(true);
     }
+
+
     return (
         <div className={css.simple_box}>
             <div className={css.simple_title}>로그인</div>

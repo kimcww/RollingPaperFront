@@ -14,11 +14,13 @@
 }
 .simple_content{
     margin-bottom: 10px;
+    float: right;
 }
 .simple_button_container{
     display:flex;
     margin-top: 20px;
     margin-bottom: 30px;
+    float: right;
 }
 .simple_button_box_left{
     text-align:left;

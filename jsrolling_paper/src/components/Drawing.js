@@ -6,11 +6,13 @@ import axios from 'axios';
 import useImage from 'use-image'
 import css from '../css/sketch/Drawing.module.css'
 import PaintPalette from './sketch/PaintPalette';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 class URLImage extends React.Component {
   state = {
     image: null,
-  };
+};  
   componentDidMount() {
     this.loadImage();
   }

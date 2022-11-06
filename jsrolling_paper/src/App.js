@@ -1,6 +1,8 @@
-import { useDispatch } from "react-redux";
 import Header from './components/header/Header';
-import { loginUser } from "./features/login/loginSlice";
+import axios from 'axios';
+import cookies from 'react-cookies';  
+
+axios.defaults.baseURL = process.env.REACT_APP_API_SERVER
 
 function App() {
 

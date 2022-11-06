@@ -7,8 +7,8 @@ import { clearUser } from '../../features/login/loginSlice';
 import Login from '../Auth/Login';
 import Register from '../Auth/Register';
 
-
 export default function Header(){
+
     const [loginOpen, setLoginOpen] = useState(false);
     const [registerOpen, setRegisterOpen] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -67,28 +67,8 @@ export default function Header(){
                 { !user.isLogin && 
                     <button className={css.basic_btn} type='button' name='register' onClick={openRegisterModal}>회원가입</button>}
                 <button className={css.basic_btn} type='button' name='share'>공유</button>
-            </div>
-            <div className={css.actions}>
-                    <Popup 
-                        open={loginOpen}
-                        onClose={closeLoginModal}
-                        modal 
-                        position = "center center"
-                        nested
-                    >
-                        <Login closeEvent={closeLoginModal}/>
-                    </Popup>
-                    <Popup 
-                        open={registerOpen}
-                        onClose={closeRegisterModal}
-                        modal 
-                        position = "center center"
-                        nested
-                    >
-                        <Register closeEvent={closeRegisterModal}/>
-                    </Popup>
-            </div>
 
+            </div>
         </div>
     )
 };
